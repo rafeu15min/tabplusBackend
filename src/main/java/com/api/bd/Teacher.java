@@ -6,8 +6,6 @@ public class Teacher {
 
     private String teacher_name;
 
-    private String password;
-
-    private String email;
+    private String teacher_password;
 
 }

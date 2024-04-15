@@ -7,6 +7,8 @@ public class Student {
     private String student_name;
     
     private String student_alias;
+
+    private String student_password;
     
     private int class_id;
 }
