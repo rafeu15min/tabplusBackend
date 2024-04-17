@@ -44,7 +44,7 @@ public class Teacher {
         joinColumns = @JoinColumn(name = "teacher_id"),
         inverseJoinColumns = @JoinColumn(name = "school_class_id")
     )
-    Set<SchoolClass> classes;
+    private Set<SchoolClass> getSchoolClasses;
 
     public void setTeacherPassword(String newPassword) throws NoSuchAlgorithmException, UnsupportedEncodingException{
         Password password = new Password();

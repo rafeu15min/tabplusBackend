@@ -2,6 +2,7 @@ package com.api.bd;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -32,6 +34,9 @@ public class SchoolClass {
 
     private int school_class_year;
 
+    @OneToMany(targetEntity = Student.class, cascade = CascadeType.ALL, mappedBy = "turn")
+    @JoinColumn(name = "school_class_id")
+    private Set<Student> getStudents;
     
     @ManyToMany
     @JoinTable(
@@ -39,5 +44,5 @@ public class SchoolClass {
         joinColumns = @JoinColumn(name = "school_class_id"),
         inverseJoinColumns = @JoinColumn(name = "teacher_id")
     )
-    Set<Teacher> teachers;
+    private Set<Teacher> teachers;
 }
