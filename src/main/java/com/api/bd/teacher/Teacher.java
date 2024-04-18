@@ -1,11 +1,7 @@
-package com.api.bd;
+package com.api.bd.teacher;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Set;
-
-import com.api.validator.Password;
-
+import com.api.bd.schoolClass.SchoolClass;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +26,7 @@ import lombok.Setter;
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int teacher_id;
+    private Long teacher_id;
 
     private String teacher_name;
 
@@ -46,8 +42,4 @@ public class Teacher {
     )
     private Set<SchoolClass> getSchoolClasses;
 
-    public void setTeacherPassword(String newPassword) throws NoSuchAlgorithmException, UnsupportedEncodingException{
-        Password password = new Password();
-        this.teacher_password = password.hash(newPassword);
-    }
 }

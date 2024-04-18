@@ -1,6 +1,9 @@
-package com.api.bd;
+package com.api.bd.schoolClass;
 
 import java.util.Set;
+
+import com.api.bd.student.Student;
+import com.api.bd.teacher.Teacher;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -28,7 +31,7 @@ import lombok.Setter;
 public class SchoolClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int school_class_id;
+    private Long school_class_id;
 
     private String school_class_grade;
 

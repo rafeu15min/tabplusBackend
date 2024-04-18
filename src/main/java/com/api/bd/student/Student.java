@@ -1,4 +1,4 @@
-package com.api.bd;
+package com.api.bd.student;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -14,12 +14,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Set;
-
-import com.api.validator.Password;
+import com.api.bd.schoolClass.SchoolClass;
+import com.api.bd.turn.Turn;
 
 @Entity
 @Table(name = "student")
@@ -31,7 +28,7 @@ import com.api.validator.Password;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int student_id;
+    private Long student_id;
     
     private String student_name;
     
@@ -41,14 +38,9 @@ public class Student {
     
     @ManyToOne
     @JoinColumn(name = "school_class_id", nullable = false)
-    private SchoolClass school_class_id;
+    private SchoolClass getSchoolClass;
 
     @OneToMany(targetEntity = Turn.class, cascade = CascadeType.ALL, mappedBy = "turn")
     @JoinColumn(name = "student_id")
     private Set<Turn> getTurns;
-
-    public void setStudentPassword(String newPassword) throws NoSuchAlgorithmException, UnsupportedEncodingException{
-        Password password = new Password();
-        this.student_password = password.hash(newPassword);
-    }
 }

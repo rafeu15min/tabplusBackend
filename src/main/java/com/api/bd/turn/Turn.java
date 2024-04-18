@@ -1,6 +1,10 @@
-package com.api.bd;
+package com.api.bd.turn;
 
 import java.util.Set;
+
+import com.api.bd.operation.Operation;
+import com.api.bd.student.Student;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +31,7 @@ public class Turn {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int turn_id;
+    private Long turn_id;
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)

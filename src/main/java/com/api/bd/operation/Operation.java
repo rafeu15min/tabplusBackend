@@ -1,4 +1,6 @@
-package com.api.bd;
+package com.api.bd.operation;
+
+import com.api.bd.turn.Turn;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +27,7 @@ public class Operation {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int operation_id;
+    private Long operation_id;
 
     private int first_term;
 
@@ -41,5 +43,5 @@ public class Operation {
 
     @ManyToOne
     @JoinColumn(name = "turn_id", nullable = false)
-    private int turn_id;
+    private Turn getTurn;
 }
