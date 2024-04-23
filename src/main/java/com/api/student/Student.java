@@ -1,4 +1,4 @@
-package com.api.bd.student;
+package com.api.student;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -15,8 +15,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Set;
-import com.api.bd.schoolClass.SchoolClass;
-import com.api.bd.turn.Turn;
+import com.api.schoolClass.SchoolClass;
+import com.api.turn.Turn;
 
 @Entity
 @Table(name = "student")
@@ -40,7 +40,7 @@ public class Student {
     @JoinColumn(name = "school_class_id", nullable = false)
     private SchoolClass getSchoolClass;
 
-    @OneToMany(targetEntity = Turn.class, cascade = CascadeType.ALL, mappedBy = "turn")
+    @OneToMany(targetEntity = Turn.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
     private Set<Turn> getTurns;
 }

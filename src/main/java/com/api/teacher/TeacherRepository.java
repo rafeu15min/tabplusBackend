@@ -1,4 +1,4 @@
-package com.api.bd.teacher;
+package com.api.teacher;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

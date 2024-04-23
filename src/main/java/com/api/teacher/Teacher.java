@@ -1,7 +1,7 @@
-package com.api.bd.teacher;
+package com.api.teacher;
 
 import java.util.Set;
-import com.api.bd.schoolClass.SchoolClass;
+import com.api.schoolClass.SchoolClass;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

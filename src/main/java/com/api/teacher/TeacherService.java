@@ -1,4 +1,4 @@
-package com.api.bd.teacher;
+package com.api.teacher;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;

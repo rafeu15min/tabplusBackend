@@ -1,14 +1,18 @@
-package com.api.bd.operation;
+package com.api.turn;
 
-import com.api.bd.turn.Turn;
+import java.util.Set;
 
-import jakarta.persistence.Column;
+import com.api.operation.Operation;
+import com.api.student.Student;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -17,31 +21,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "operation")
+@Table(name = "turn")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Operation {
-    
+public class Turn {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long operation_id;
-
-    private int first_term;
-
-    private int second_term;
-
-    private int answer;
-
-    @Column(
-        name = "is_correct_answer",
-        columnDefinition = "INT(1)"
-        )
-    private boolean is_correct_answer;
+    private Long turn_id;
 
     @ManyToOne
-    @JoinColumn(name = "turn_id", nullable = false)
-    private Turn getTurn;
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student getStudent;
+
+    private String created_at;
+
+    @OneToMany(targetEntity = Operation.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "turn_id")
+    private Set<Operation> getOperations;
 }

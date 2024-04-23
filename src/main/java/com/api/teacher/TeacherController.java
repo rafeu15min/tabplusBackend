@@ -1,4 +1,4 @@
-package com.api.bd.teacher;
+package com.api.teacher;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(name = "/teacher")
+@RequestMapping("/teacher")
 @RequiredArgsConstructor
 public class TeacherController {
     

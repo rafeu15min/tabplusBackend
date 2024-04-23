@@ -1,9 +1,9 @@
-package com.api.bd.schoolClass;
+package com.api.schoolClass;
 
 import java.util.Set;
 
-import com.api.bd.student.Student;
-import com.api.bd.teacher.Teacher;
+import com.api.student.Student;
+import com.api.teacher.Teacher;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -37,7 +37,7 @@ public class SchoolClass {
 
     private int school_class_year;
 
-    @OneToMany(targetEntity = Student.class, cascade = CascadeType.ALL, mappedBy = "turn")
+    @OneToMany(targetEntity = Student.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "school_class_id")
     private Set<Student> getStudents;
     

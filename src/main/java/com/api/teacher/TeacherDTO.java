@@ -1,9 +1,6 @@
-package com.api.bd.teacher;
+package com.api.teacher;
 
-import java.util.Set;
-
-import com.api.bd.schoolClass.SchoolClass;
-
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +8,9 @@ import lombok.Setter;
 @Setter
 public class TeacherDTO {
     
+    private Long teacher_id;
+    @NotBlank
     private String teacher_name;
     private String teacher_password;
     private String teacher_email;
-    private Set<SchoolClass> getSchoolClasses;
 }
