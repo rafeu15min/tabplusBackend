@@ -21,4 +21,5 @@ public class TeacherController {
     public void signUp(@RequestBody TeacherDTO dto) throws NoSuchAlgorithmException, UnsupportedEncodingException{
         teacherService.addTeacher(dto);
     }
+
 }

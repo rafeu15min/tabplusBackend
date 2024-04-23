@@ -36,12 +36,10 @@ public class Password {
 
     }
 
-    public boolean validate(String encryptedPassword, String passwordString)
-            throws DecoderException, UnsupportedEncodingException {
-
+    public String unhash(String passwordString) throws NoSuchAlgorithmException, UnsupportedEncodingException{
         String unHexedPassword = "";
         try {
-            byte[] bytes = Hex.decodeHex(encryptedPassword);
+            byte[] bytes = Hex.decodeHex(passwordString);
             unHexedPassword = new String(bytes, StandardCharsets.UTF_8);
         } catch (DecoderException e) {
             throw new IllegalArgumentException("Invalid Hex format!");
@@ -49,18 +47,19 @@ public class Password {
 
         String unBase64dPassword = new String(Base64.decodeBase64(unHexedPassword.getBytes()));
 
-        char[] hash = unBase64dPassword.substring(unBase64dPassword.length() - passwordString.length()).toCharArray();
+        char[] hash = unBase64dPassword.substring(unBase64dPassword.length() - unBase64dPassword.length()/2).toCharArray();
 
         char[] passwordCharArray = unBase64dPassword.substring(0,
-                unBase64dPassword.length() - passwordString.length()).toCharArray();
-        for (int i = 0; i < passwordCharArray.length; i++) {
-            try {
-                passwordCharArray[i] -= hash[i];
-            } catch (ArrayIndexOutOfBoundsException e) {
-                return false;
-            }
+                unBase64dPassword.length() - (unBase64dPassword.length()/2)).toCharArray();
+        for (int i = 0; i < unBase64dPassword.length() / 2; i++) {
+            passwordCharArray[i] -= hash[i];
         }
-        String decryptedPassword = new String(passwordCharArray);
+        return new String(passwordCharArray);
+    }
+
+    public boolean validate(String encryptedPassword, String passwordString) throws DecoderException, NoSuchAlgorithmException, UnsupportedEncodingException {
+
+        String decryptedPassword = unhash(encryptedPassword);
         return decryptedPassword.equals(passwordString);
     }
 
