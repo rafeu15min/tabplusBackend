@@ -8,8 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -38,11 +36,4 @@ public class SchoolClass {
     @JoinColumn(name = "school_class_id")
     private Set<Student> getStudents;
     
-    @ManyToMany
-    @JoinTable(
-        name = "class_teacher",
-        joinColumns = @JoinColumn(name = "school_class_id"),
-        inverseJoinColumns = @JoinColumn(name = "teacher_id")
-    )
-    private Set<Teacher> teachers;
 }

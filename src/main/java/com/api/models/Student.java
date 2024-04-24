@@ -30,10 +30,6 @@ public class Student {
     
     private String student_name;
     
-    private String student_username;
-
-    private String student_password;
-    
     @ManyToOne
     @JoinColumn(name = "school_class_id", nullable = false)
     private SchoolClass getSchoolClass;
