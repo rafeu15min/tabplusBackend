@@ -1,9 +1,6 @@
-package com.api.turn;
+package com.api.models;
 
 import java.util.Set;
-
-import com.api.operation.Operation;
-import com.api.student.Student;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

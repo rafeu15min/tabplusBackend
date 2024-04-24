@@ -1,4 +1,4 @@
-package com.api.teacher;
+package com.api.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

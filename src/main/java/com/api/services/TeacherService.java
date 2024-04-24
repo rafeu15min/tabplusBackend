@@ -1,4 +1,4 @@
-package com.api.teacher;
+package com.api.services;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -6,6 +6,9 @@ import java.security.NoSuchAlgorithmException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.api.repositories.TeacherRepository;
+import com.api.dto.TeacherDTO;
+import com.api.models.Teacher;
 import com.api.validator.Password;
 
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,8 @@
-package com.api.teacher;
+package com.api.models;
 
 import java.util.Set;
-import com.api.schoolClass.SchoolClass;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -17,29 +19,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "teacher")
+@Table(name = "school_class")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Teacher {
+public class SchoolClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long teacher_id;
+    private Long school_class_id;
 
-    private String teacher_name;
+    private String school_class_grade;
 
-    private String teacher_password;
+    private int school_class_year;
 
-    private String teacher_email;
-
+    @OneToMany(targetEntity = Student.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "school_class_id")
+    private Set<Student> getStudents;
+    
     @ManyToMany
     @JoinTable(
-        name = "class_teacher", 
-        joinColumns = @JoinColumn(name = "teacher_id"),
-        inverseJoinColumns = @JoinColumn(name = "school_class_id")
+        name = "class_teacher",
+        joinColumns = @JoinColumn(name = "school_class_id"),
+        inverseJoinColumns = @JoinColumn(name = "teacher_id")
     )
-    private Set<SchoolClass> getSchoolClasses;
-
+    private Set<Teacher> teachers;
 }

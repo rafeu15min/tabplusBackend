@@ -1,4 +1,4 @@
-package com.api.student;
+package com.api.models;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -15,8 +15,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Set;
-import com.api.schoolClass.SchoolClass;
-import com.api.turn.Turn;
 
 @Entity
 @Table(name = "student")

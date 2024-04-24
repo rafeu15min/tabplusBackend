@@ -1,6 +1,4 @@
-package com.api.operation;
-
-import com.api.turn.Turn;
+package com.api.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
