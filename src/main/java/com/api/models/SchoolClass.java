@@ -1,6 +1,6 @@
 package com.api.models;
 
-import java.util.Set;
+import java.util.*;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -34,6 +34,6 @@ public class SchoolClass {
 
     @OneToMany(targetEntity = Student.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "school_class_id")
-    private Set<Student> getStudents;
+    private List<Student> getStudents;
     
 }

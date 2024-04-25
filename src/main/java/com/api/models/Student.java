@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "student")
@@ -36,5 +36,5 @@ public class Student {
 
     @OneToMany(targetEntity = Turn.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
-    private Set<Turn> getTurns;
+    private List<Turn> getTurns;
 }

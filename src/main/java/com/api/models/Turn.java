@@ -1,6 +1,6 @@
 package com.api.models;
 
-import java.util.Set;
+import java.util.*;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -38,5 +38,5 @@ public class Turn {
 
     @OneToMany(targetEntity = Operation.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "turn_id")
-    private Set<Operation> getOperations;
+    private List<Operation> getOperations;
 }
