@@ -1,5 +1,8 @@
 package com.api.services;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +16,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class StudentService {
     
-    private final StudentRepository StudentRepository;
+    private final StudentRepository studentRepository;
 
     private final ModelMapper modelMapper;
 
     public StudentDTO addStudent(StudentDTO dto){
-       Student Student = modelMapper.map(dto, Student.class);
-       StudentRepository.save(Student);
+       Student student = modelMapper.map(dto, Student.class);
+       studentRepository.save(student);
 
-       return modelMapper.map(Student, StudentDTO.class);
+       return modelMapper.map(student, StudentDTO.class);
     }
-
+    
+    public List<StudentDTO> searchAllStudents() {
+        return studentRepository.findAll().stream().map(p -> modelMapper.map(p, StudentDTO.class))
+                .collect(Collectors.toList());
+    }
 
 }

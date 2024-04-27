@@ -6,24 +6,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
-import com.api.dto.OperationDTO;
-import com.api.services.OperationService;
+import com.api.dto.TurnDTO;
+import com.api.services.TurnService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/Operation")
+@RequestMapping("/Turn")
 @RequiredArgsConstructor
-public class OperationController {
-    private final OperationService operationService;
+public class TurnController {
+    private final TurnService turnService;
 
     @PostMapping
-    public void signUp(@RequestBody OperationDTO dto) {
-        operationService.addOperation(dto);
+    public void signUp(@RequestBody TurnDTO dto) {
+        turnService.addTurn(dto);
+    }
+
+    @GetMapping
+    public List<TurnDTO> searchAll(){
+        return turnService.searchAllTurns();
     }
     
-    @GetMapping
-    public List<OperationDTO> searchAll() {
-        return operationService.searchAllOperations();
-    }
 }
