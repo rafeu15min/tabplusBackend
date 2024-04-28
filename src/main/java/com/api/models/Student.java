@@ -30,11 +30,13 @@ public class Student {
     
     private String student_name;
     
-    @ManyToOne
-    @JoinColumn(name = "school_class_id", nullable = false)
-    private SchoolClass getSchoolClass;
+    // @ManyToOne
+    // @JoinColumn(name = "school_class_id", nullable = false)
+    // private SchoolClass getSchoolClass;
 
     @OneToMany(targetEntity = Turn.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
     private List<Turn> getTurns;
+    
+    private Long school_class_id;
 }

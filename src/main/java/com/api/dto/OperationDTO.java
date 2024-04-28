@@ -8,6 +8,9 @@ import lombok.Setter;
 @Setter
 public class OperationDTO {
     private Long operation_id;
+
+    @NotBlank
+    private Long turn_id;
     
     @NotBlank
     private int first_term;

@@ -30,13 +30,13 @@ public class Turn {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long turn_id;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
-    private Student getStudent;
-
-    private String created_at;
+    // @ManyToOne
+    // @JoinColumn(name = "student_id", nullable = false)
+    // private Student getStudent;
 
     @OneToMany(targetEntity = Operation.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "turn_id")
     private List<Operation> getOperations;
+
+    private Long student_id;
 }

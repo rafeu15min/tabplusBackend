@@ -6,6 +6,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.api.repositories.TurnRepository;
+
+import jakarta.persistence.EntityNotFoundException;
+
 import com.api.dto.TurnDTO;
 import com.api.models.Turn;
 
@@ -28,5 +31,10 @@ public class TurnService {
 
     public List<TurnDTO> searchAllTurns(){
         return turnRepository.findAll().stream().map(p -> modelMapper.map(p, TurnDTO.class)).collect(Collectors.toList());
+    }
+
+    public TurnDTO buscarPorID(Long id){
+        Turn turn = turnRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        return modelMapper.map(turn, TurnDTO.class);
     }
 }

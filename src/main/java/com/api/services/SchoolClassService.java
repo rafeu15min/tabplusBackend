@@ -6,6 +6,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.api.repositories.SchoolClassRepository;
+
+import jakarta.persistence.EntityNotFoundException;
+
 import com.api.dto.SchoolClassDTO;
 import com.api.models.SchoolClass;
 
@@ -31,4 +34,8 @@ public class SchoolClassService {
                 .collect(Collectors.toList());
     }
 
+    public SchoolClassDTO SearchById(Long id){
+        SchoolClass schoolClass = schoolClassRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        return modelMapper.map(schoolClass, SchoolClassDTO.class);
+    }
 }

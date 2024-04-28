@@ -6,6 +6,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.api.repositories.OperationRepository;
+
+import jakarta.persistence.EntityNotFoundException;
+
 import com.api.dto.OperationDTO;
 import com.api.models.Operation;
 
@@ -30,5 +33,10 @@ public class OperationService {
     public List<OperationDTO> searchAllOperations() {
         return operationRepository.findAll().stream().map(p -> modelMapper.map(p, OperationDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    public OperationDTO buscarPorID(Long id){
+        Operation operation = operationRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        return modelMapper.map(operation, OperationDTO.class);
     }
 }

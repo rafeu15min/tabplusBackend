@@ -1,6 +1,7 @@
 package com.api.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,7 @@ import java.util.*;
 import com.api.dto.TurnDTO;
 import com.api.services.TurnService;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -26,5 +28,10 @@ public class TurnController {
     public List<TurnDTO> searchAll(){
         return turnService.searchAllTurns();
     }
+
+    @GetMapping("/{id}")
+    public TurnDTO buscarPorID(@PathVariable @NotNull Long id){
+        return turnService.buscarPorID(id);
+}
     
 }

@@ -39,7 +39,9 @@ public class Operation {
         )
     private boolean is_correct_answer;
 
-    @ManyToOne
-    @JoinColumn(name = "turn_id", nullable = false)
-    private Turn getTurn;
+    // @ManyToOne
+    // @JoinColumn(name = "turn_id", nullable = false)
+    // private Turn getTurn;
+
+    private Long turn_id;
 }
