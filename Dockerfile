@@ -1,7 +1,9 @@
-FROM openjdk:21-slim  
+FROM maven:4.0.0-amazoncorretto-17 as build
 WORKDIR /app
-COPY pom.xml ./
-RUN mvn clean install
-COPY target/*.jar app.jar
-EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+COPY . .
+RUN mvn clean package -X -DskipTests
+
+FROM openjdk:21-ea-10-jdk-slim
+WORKDIR /app
+COPY --from=build ./app/target/*.jar ./tabplus.jar
+ENTRYPOINT java -jar springdeskcurso.jar
