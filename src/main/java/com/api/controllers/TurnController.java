@@ -1,5 +1,6 @@
 package com.api.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/Turn")
 @RequiredArgsConstructor
 public class TurnController {
@@ -29,6 +31,7 @@ public class TurnController {
         return turnService.searchAllTurns();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public TurnDTO buscarPorID(@PathVariable @NotNull Long id){
         return turnService.buscarPorID(id);

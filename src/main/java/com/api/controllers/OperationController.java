@@ -1,5 +1,6 @@
 package com.api.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/Operation")
 @RequiredArgsConstructor
 public class OperationController {
@@ -29,6 +31,7 @@ public class OperationController {
         return operationService.searchAllOperations();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public OperationDTO buscarPorID(@PathVariable @NotNull Long id){
         return operationService.buscarPorID(id);

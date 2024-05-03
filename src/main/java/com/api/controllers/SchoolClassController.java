@@ -1,5 +1,6 @@
 package com.api.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/SchoolClass")
 @RequiredArgsConstructor
 public class SchoolClassController {
@@ -30,6 +32,7 @@ public class SchoolClassController {
         return schoolClassService.searchAllSchoolClasses();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public SchoolClassDTO searchById(@PathVariable @NotNull Long id){
         return schoolClassService.SearchById(id);
