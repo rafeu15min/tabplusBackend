@@ -31,8 +31,7 @@ public class StudentController {
     public List<StudentDTO> searchAll() {
         return studentService.searchAllStudents();
     }
-
-    @CrossOrigin
+    
     @GetMapping("/{id}")
     public StudentDTO searchById(@PathVariable @NotNull Long id){
         return studentService.searchById(id);

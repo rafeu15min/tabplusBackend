@@ -30,8 +30,7 @@ public class TurnController {
     public List<TurnDTO> searchAll(){
         return turnService.searchAllTurns();
     }
-
-    @CrossOrigin
+    
     @GetMapping("/{id}")
     public TurnDTO buscarPorID(@PathVariable @NotNull Long id){
         return turnService.buscarPorID(id);

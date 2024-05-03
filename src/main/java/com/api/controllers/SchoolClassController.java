@@ -31,8 +31,7 @@ public class SchoolClassController {
     public List<SchoolClassDTO> searchAll() {
         return schoolClassService.searchAllSchoolClasses();
     }
-
-    @CrossOrigin
+    
     @GetMapping("/{id}")
     public SchoolClassDTO searchById(@PathVariable @NotNull Long id){
         return schoolClassService.SearchById(id);

@@ -30,8 +30,7 @@ public class OperationController {
     public List<OperationDTO> searchAll() {
         return operationService.searchAllOperations();
     }
-
-    @CrossOrigin
+    
     @GetMapping("/{id}")
     public OperationDTO buscarPorID(@PathVariable @NotNull Long id){
         return operationService.buscarPorID(id);
