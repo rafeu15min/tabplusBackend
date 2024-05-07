@@ -33,6 +33,11 @@ public class StudentService {
                 .collect(Collectors.toList());
     }
 
+    public List<StudentDTO> searchStudentBySchoolClass(Long id){
+        return studentRepository.findBySchoolClassId(id).stream().map(p -> modelMapper.map(p, StudentDTO.class))
+                .collect(Collectors.toList());
+    }
+
     public StudentDTO searchById(Long id){
         Student student = studentRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
         return modelMapper.map(student, StudentDTO.class);

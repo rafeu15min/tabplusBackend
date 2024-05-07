@@ -13,6 +13,8 @@ import com.api.services.StudentService;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @CrossOrigin
@@ -27,14 +29,20 @@ public class StudentController {
         studentService.addStudent(dto);
     }
 
-    @GetMapping
+    @GetMapping("/searchAll")
     public List<StudentDTO> searchAll() {
         return studentService.searchAllStudents();
     }
+
+    @GetMapping("/searchBySchoolClass/{id}")
+    public List<StudentDTO> searchBySchoolClass(@PathVariable @NotNull Long id) {
+        return studentService.searchStudentBySchoolClass(id);
+    }
     
-    @GetMapping("/{id}")
+    
+    @GetMapping("/searchByID/{id}")
     public StudentDTO searchById(@PathVariable @NotNull Long id){
         return studentService.searchById(id);
-}
+    }
 
 }

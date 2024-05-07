@@ -17,5 +17,4 @@ public class StudentDTO {
     private String student_name;
     @NotBlank
     private Long school_class_id;
-    private List<Turn> getTurns;
 }
