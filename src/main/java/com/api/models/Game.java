@@ -1,6 +1,5 @@
 package com.api.models;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,33 +12,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "operation")
+@Table(name = "game")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Operation {
-    
+public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long operation_id;
+    private Long game_id;
 
-    private int first_term;
+    private String game_grade;
 
-    private int second_term;
+    private int game_year;
+
+    private String game_player;
+
+    private int hits;
+
+    private String multiplication;
 
     private int answer;
 
-    @Column(
-        name = "is_correct_answer",
-        columnDefinition = "INT(1)"
-        )
-    private boolean is_correct_answer;
-
-    // @ManyToOne
-    // @JoinColumn(name = "turn_id", nullable = false)
-    // private Turn getTurn;
-
-    private Long turn_id;
+    private int result;
 }

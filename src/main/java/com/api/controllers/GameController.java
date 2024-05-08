@@ -8,42 +8,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
-import com.api.dto.StudentDTO;
-import com.api.services.StudentService;
+import com.api.dto.GameDTO;
+import com.api.services.GameService;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
 @RestController
 @CrossOrigin
-@RequestMapping("/Student")
+@RequestMapping("/Game")
 @RequiredArgsConstructor
-public class StudentController {
-    
-    private final StudentService studentService;
+public class GameController {
+
+    private final GameService gameService;
 
     @PostMapping
-    public void signUp(@RequestBody StudentDTO dto){
-        studentService.addStudent(dto);
+    public void signUp(@RequestBody GameDTO dto) {
+        gameService.addGame(dto);
     }
 
     @GetMapping("/searchAll")
-    public List<StudentDTO> searchAll() {
-        return studentService.searchAllStudents();
+    public List<GameDTO> searchAll() {
+        return gameService.searchAllGames();
     }
 
-    @GetMapping("/searchBySchoolClass/{id}")
-    public List<StudentDTO> searchBySchoolClass(@PathVariable @NotNull Long id) {
-        return studentService.searchStudentBySchoolClass(id);
+    @GetMapping("/searchByPlayer/{player}")
+    public List<GameDTO> searchByPlayer(@PathVariable @NotNull String player) {
+        return gameService.searchGameByPlayer(player);
     }
-    
-    
+
     @GetMapping("/searchByID/{id}")
-    public StudentDTO searchById(@PathVariable @NotNull Long id){
-        return studentService.searchById(id);
+    public GameDTO searchById(@PathVariable @NotNull Long id) {
+        return gameService.searchById(id);
     }
 
 }
