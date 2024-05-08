@@ -31,9 +31,5 @@ public class SchoolClass {
     private String school_class_grade;
 
     private int school_class_year;
-
-    @OneToMany(targetEntity = Student.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "school_class_id")
-    private List<Student> getStudents;
     
 }
