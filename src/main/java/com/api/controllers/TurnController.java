@@ -33,7 +33,7 @@ public class TurnController {
     
     @GetMapping("/{id}")
     public TurnDTO buscarPorID(@PathVariable @NotNull Long id){
-        return turnService.buscarPorID(id);
+        return turnService.searchTurnById(id);
 }
     
 }
