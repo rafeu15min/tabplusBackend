@@ -33,7 +33,11 @@ public class TurnService {
         return turnRepository.findAll().stream().map(p -> modelMapper.map(p, TurnDTO.class)).collect(Collectors.toList());
     }
 
-    public TurnDTO buscarPorID(Long id){
+    public List<TurnDTO> searchTurnsByStudentId(Long id){
+        return turnRepository.findByStudentId(id).stream().map(p -> modelMapper.map(p, TurnDTO.class)).collect(Collectors.toList());   
+     }
+
+    public TurnDTO searchTurnById(Long id){
         Turn turn = turnRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
         return modelMapper.map(turn, TurnDTO.class);
     }
