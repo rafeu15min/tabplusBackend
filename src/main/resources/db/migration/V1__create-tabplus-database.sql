@@ -4,7 +4,7 @@ CREATE TABLE `game` (
     `game_id` integer UNIQUE PRIMARY KEY NOT NULL auto_increment,
     `game_grade` varchar(2), 
     `game_year` integer,
-    `game_player` varchar(255),
+    `player` varchar(255),
     `hits` integer, -- quantidade de acertos
     `multiplication` VARCHAR(10),
     `answer` integer, -- resposta fornecida pelo usuário

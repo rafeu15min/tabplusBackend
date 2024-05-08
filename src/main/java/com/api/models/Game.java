@@ -27,7 +27,7 @@ public class Game {
 
     private int game_year;
 
-    private String game_player;
+    private String player;
 
     private int hits;
 

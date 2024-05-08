@@ -21,7 +21,7 @@ public class GameService {
     private final GameRepository gameRepository;
 
     private final ModelMapper modelMapper;
-    
+
     public GameDTO addGame(GameDTO dto) {
         Game game = modelMapper.map(dto, Game.class);
         String[] values = game.getMultiplication().split("\\W(?<group>X|x)\\W");
@@ -36,7 +36,7 @@ public class GameService {
     }
 
     public List<GameDTO> searchGameByPlayer(String player) {
-        return gameRepository.findByGame_player(player).stream().map(p -> modelMapper.map(p, GameDTO.class)).collect(Collectors.toList());
+        return gameRepository.findByPlayer(player).stream().map(p -> modelMapper.map(p, GameDTO.class)).collect(Collectors.toList());
     }
 
     public GameDTO searchById(Long id) {

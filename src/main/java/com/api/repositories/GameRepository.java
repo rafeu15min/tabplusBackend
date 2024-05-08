@@ -6,5 +6,5 @@ import com.api.models.Game;
 import java.util.List;
 
 public interface GameRepository extends JpaRepository<Game, Long> {
-    List<Game> findByGame_player(String game_player);
+    List<Game> findByPlayer(String player);
 }

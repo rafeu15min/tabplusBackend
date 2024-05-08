@@ -17,7 +17,7 @@ public class GameDTO {
     private int game_year;
 
     @NotBlank
-    private String game_player;
+    private String player;
 
     @NotBlank
     private int hits;
@@ -27,6 +27,6 @@ public class GameDTO {
 
     @NotBlank
     private int answer;
-    
+
     private int result;
 }
