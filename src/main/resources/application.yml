@@ -8,7 +8,6 @@ spring:
         password: ${DB_PASSWORD}
     flyway:
         baseline-on-migrate: false
-        baseline-version: 0
     jpa:
         show-sql: true
         
