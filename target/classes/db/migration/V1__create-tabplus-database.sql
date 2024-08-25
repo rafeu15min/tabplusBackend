@@ -10,5 +10,3 @@ CREATE TABLE `game` (
     `answer` integer, -- resposta fornecida pelo usuário
     `result` integer -- resposta certa
 );
-
-SELECT * INTO `game` FROM `game_success`;
